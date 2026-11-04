@@ -19,6 +19,7 @@ namespace JsonTest
             string jsonRead = File.ReadAllText("statdata.json");
 
             Console.WriteLine(jsonRead);
+            Console.ReadKey();
 
         }
         
