@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.Json;
+using System.IO;
 
 namespace JsonTest
 {
@@ -13,11 +14,11 @@ namespace JsonTest
         {
             StatData data = new StatData("mar","Chef", 1);
             string jsonString = JsonSerializer.Serialize<StatData>(data);
+            File.WriteAllText("statdata.json", jsonString);
 
+            string jsonRead = File.ReadAllText("statdata.json");
 
-
-
-            Console.WriteLine(jsonString);
+            Console.WriteLine(jsonRead);
 
         }
         
