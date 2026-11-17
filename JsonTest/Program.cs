@@ -13,12 +13,22 @@ namespace JsonTest
         static void Main(string[] args)
         {
             StatData data = new StatData("mar","Chef", 1);
+            //StatData data = new StatData();
+            //data.jobClass = "Chef";
+            //data.name = "mar";
+            //data.Level = 1;
             string jsonString = JsonSerializer.Serialize<StatData>(data);
             File.WriteAllText("statdata.json", jsonString);
 
             string jsonRead = File.ReadAllText("statdata.json");
-
             Console.WriteLine(jsonRead);
+            Console.WriteLine("");
+            StatData data2 = JsonSerializer.Deserialize<StatData>(jsonRead);
+            Console.WriteLine(data2.name);
+            Console.WriteLine(data2.level);
+            Console.WriteLine(data2.jobClass);
+            Console.WriteLine("");
+
             Console.ReadKey();
 
         }
@@ -26,14 +36,14 @@ namespace JsonTest
     }
     public class StatData
     {
-        public StatData(string Name,string job, int lv)
+        public StatData(string name, string jobClass, int level)
         {
-            name = Name;
-            jobClass = job;
-            Level = lv;
+            this.name = name;
+            this.jobClass = jobClass;
+            this.level = level;
         }
         public string name { get; set; }
         public string jobClass { get; set; }
-        public int Level { get; set; }
+        public int level { get; set; }
     }
 }
